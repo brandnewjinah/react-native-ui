@@ -1,21 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { FC } from "react";
+import { SafeAreaView, Platform, StatusBar, View } from "react-native";
 
-export default function App() {
+//import screens
+import Input from "./screens/InputExample";
+import Buttons from "./screens/ButtonExample";
+
+//import styles and assets
+import styled from "styled-components";
+
+const App: FC = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Wrapper>
+      {/* <Input /> */}
+      <Buttons />
+    </Wrapper>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Wrapper = styled(SafeAreaView)`
+  flex: 1;
+  ${Platform.select({
+    ios: {
+      fontFamily: "Avenir",
+    },
+    android: {
+      fontFamily: "Roboto",
+      paddingTop: StatusBar.currentHeight,
+    },
+  })}
+`;
+
+export default App;
