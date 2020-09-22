@@ -8,3 +8,6 @@ I'm still learning, so if there is anything that's not properly coded, please fe
 ## Components
 - [Button](https://github.com/brandnewjinah/react-native-ui/tree/master/components/Buttons)
 - [Input](https://github.com/brandnewjinah/react-native-ui/tree/master/components/Input)
+
+<br><br>
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fbrandnewjinah%2Freact-native-ui&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
