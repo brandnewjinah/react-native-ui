@@ -11,7 +11,7 @@ Start by importing Input component.
 ```tsx
 import Input from "./components/Input/Input";
 ```
-<br><br>
+<br>
 
 Set `style` and give it a `label`. By default, the input field has rounded corners.
 
