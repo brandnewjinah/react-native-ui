@@ -2,12 +2,12 @@ import React, { FC } from "react";
 import { View, Text } from "react-native";
 
 //import components
-import Buttons from "../components/Buttons";
+import Buttons from "../components/Buttons/Buttons";
 
 //import styles and assets
 import styled from "styled-components/native";
 import { Apple } from "../assets/icons/Icons";
-import Typography from "../components/Typography";
+import Typography from "../components/Typography/Typography";
 
 interface Props {}
 

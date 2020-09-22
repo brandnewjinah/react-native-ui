@@ -1,18 +1,19 @@
 import React, { FC, useState } from "react";
 import { TextInput, View, TouchableOpacity } from "react-native";
 
-import Typography from "../components/Typography";
-import colors from "./Colors";
+import Typography from "../Typography/Typography";
+import colors from "../Colors/Colors";
 
 interface Props {
   style?: "rounded" | "underline" | "pill";
-  type?: "password" | "emailAddress";
+  type?: "password";
   label: string;
   placeholder?: string;
-  keyboard?: "email-address";
+  color?: any;
+  keyboard?: any;
   disabled?: boolean;
   prefix?: any;
-  error?: string;
+  error?: any;
   onChangeText: (text: string) => void;
 }
 
@@ -30,7 +31,7 @@ const Input: FC<Props> = (props) => {
 
   return (
     <View>
-      <Typography scale="capton" color={props.disabled && "#c4c4c4"}>
+      <Typography scale="overline" color={props.disabled && "#c4c4c4"}>
         {props.label}
       </Typography>
       <View
@@ -41,13 +42,18 @@ const Input: FC<Props> = (props) => {
             : props.style === "underline"
             ? Underline
             : Rounded),
-          ...(focused && FocusStyle),
-          ...(props.error && ErrorStyle),
+          ...(focused &&
+            (props.color
+              ? { borderColor: props.color }
+              : { borderColor: "#a8a8a8" })),
+          ...(props.error && { borderColor: "#F75010" }),
         }}
       >
         {props.prefix && (
           <View style={{ marginRight: 10 }}>
-            <Typography scale="body">{props.prefix}</Typography>
+            <Typography scale="body" color={props.disabled && "#c4c4c4"}>
+              {props.prefix}
+            </Typography>
           </View>
         )}
         <TextInput
@@ -67,9 +73,9 @@ const Input: FC<Props> = (props) => {
         />
 
         {props.type === "password" && (
-          <View style={props.style === "underline" ? Align : Padding}>
+          <View>
             <TouchableOpacity onPress={handleToggle}>
-              <Typography scale="capton">{hide ? "Show" : "Hide"}</Typography>
+              <Typography scale="overline">{hide ? "Show" : "Hide"}</Typography>
             </TouchableOpacity>
           </View>
         )}
@@ -93,14 +99,6 @@ const Align = {
   position: "absolute",
   bottom: 15,
   right: 0,
-};
-
-const ErrorStyle = {
-  borderColor: "#F75010",
-};
-
-const FocusStyle = {
-  borderColor: "#00a699",
 };
 
 const Rounded = {

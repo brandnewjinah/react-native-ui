@@ -11,8 +11,8 @@ import styled from "styled-components";
 const App: FC = () => {
   return (
     <Wrapper>
-      {/* <Input /> */}
-      <Buttons />
+      <Input />
+      {/* <Buttons /> */}
     </Wrapper>
   );
 };

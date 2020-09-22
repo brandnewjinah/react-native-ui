@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import { View, TouchableOpacity } from "react-native";
 
 import styled from "styled-components";
-import Typography from "../components/Typography";
-import colors from "./Colors";
+import Typography from "./Typography/Typography";
+import colors from "./Colors/Colors";
 import { ArrowRight } from "../assets/icons/Icons";
 
 interface Props {

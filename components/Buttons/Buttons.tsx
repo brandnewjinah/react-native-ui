@@ -2,9 +2,9 @@ import React, { FC } from "react";
 import { TouchableOpacity, View } from "react-native";
 
 import styled, { css } from "styled-components/native";
-import Typography from "../components/Typography";
-import colors from "./Colors";
-import { ArrowRight, ArrowLeft } from "../assets/icons/Icons";
+import Typography from "../Typography/Typography";
+import colors from "../Colors/Colors";
+import { ArrowRight, ArrowLeft } from "../../assets/icons/Icons";
 
 interface Props {
   style?: "rounded" | "pill" | "contained";
