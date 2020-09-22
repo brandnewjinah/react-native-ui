@@ -2,7 +2,7 @@
 
 A component to allow user to press to take actions.
 
-![Button%204d115d9866b74ce7afcf2210e8455338/Buttons.png](Button%204d115d9866b74ce7afcf2210e8455338/Buttons.png)
+![Button](https://raw.githubusercontent.com/brandnewjinah/react-native-ui/master/assets/readme/Buttons.png)
 
 ### Usage
 
