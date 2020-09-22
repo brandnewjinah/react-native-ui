@@ -2,7 +2,7 @@
 
 A component to allow user to input text
 
-![Input%204420c113f37d4f18b9ffcdebee9b5be1/Input.png](Input%204420c113f37d4f18b9ffcdebee9b5be1/Input.png)
+<img src="https://raw.githubusercontent.com/brandnewjinah/react-native-ui/master/assets/readme/Input.png" alt="input" width="780"/>
 
 ### Usage
 
