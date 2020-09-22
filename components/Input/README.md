@@ -12,6 +12,7 @@ Start by importing Input component.
 import Input from "./components/Input/Input";
 ```
 
+
 Set `style` and give it a `label`. By default, the input field has rounded corners.
 
 ```tsx
@@ -20,11 +21,13 @@ Set `style` and give it a `label`. By default, the input field has rounded corne
 <Input style="underline" label="Zipcode" />
 ```
 
+
 You can add a prefix to the input field with `prefix` property.
 
 ```tsx
 <Input style="pill" prefix="$" />
 ```
+
 
 Set `type` to password for password field
 
@@ -32,11 +35,13 @@ Set `type` to password for password field
 <Input type="password" placeholder="Enter Password" />
 ```
 
+
 Disable input field with `disable` property.
 
 ```tsx
 <Input style="pill" disabled={true} />
 ```
+
 
 Active field is highlighted. You can customize the highlight color with `color` property.
 
@@ -44,11 +49,13 @@ Active field is highlighted. You can customize the highlight color with `color` 
 <Input style="pill" color="#00a699" />
 ```
 
+
 You can pass error message with `error` property.
 
 ```tsx
 <Input style="underline" error="Error message here" />
 ```
+
 
 You can set keyboard type with `keyboard` property. Refer to React Native doc for values.
 
@@ -56,4 +63,4 @@ You can set keyboard type with `keyboard` property. Refer to React Native doc fo
 <Input style="pill" keyboard="number-pad" />
 ```
 
-Example
+
