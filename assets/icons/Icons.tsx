@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import Svg, { Path, Circle, G } from "react-native-svg";
 
 export const Search = () => {
@@ -62,14 +62,18 @@ export const Apple = () => {
   );
 };
 
-export const User = () => {
+interface UserProps {
+  size?: number;
+}
+
+export const User: FC<UserProps> = (props) => {
   return (
     <Svg
-      width={24}
-      height={24}
+      width={props.size ? props.size : 24}
+      height={props.size ? props.size : 24}
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#000"
+      stroke="#fff"
       strokeWidth={2}
     >
       <Path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />

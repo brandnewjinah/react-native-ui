@@ -16,6 +16,7 @@ interface Props {
   sub?: string;
   meta?: string;
   avatar?: any;
+  avatarSmall?: boolean;
   option?: any;
   icon?: boolean;
   unread?: number;
@@ -25,7 +26,25 @@ interface Props {
 const Lists: FC<Props> = (props) => {
   return (
     <Container>
-      {props.avatar ? (
+      {props.avatar && props.avatarSmall ? (
+        <AvatarSmall source={{ uri: props.avatar }} />
+      ) : props.avatar === null &&
+        props.avatarSmall &&
+        props.initial === true ? (
+        <AvatarSmallEmpty
+          style={{ ...(props.color && { backgroundColor: props.color }) }}
+        >
+          <Typography scale="body" color={color.black}>
+            {props.primary.charAt(0)}
+          </Typography>
+        </AvatarSmallEmpty>
+      ) : props.avatar === null && props.avatarSmall ? (
+        <AvatarSmallEmpty
+          style={{ ...(props.color && { backgroundColor: props.color }) }}
+        >
+          <User size={18} />
+        </AvatarSmallEmpty>
+      ) : props.avatar ? (
         <Avatar source={{ uri: props.avatar }} />
       ) : props.avatar === null && props.initial === true ? (
         <AvatarEmpty
@@ -42,16 +61,7 @@ const Lists: FC<Props> = (props) => {
           <User />
         </AvatarEmpty>
       ) : null}
-      {/* {props.avatar ? (
-        <Avatar source={{ uri: props.avatar }} />
-      ) : props.avatar === null ? (
-        <AvatarEmpty
-          style={{ ...(props.color && { backgroundColor: props.color }) }}
-        >
-          <User />
-        </AvatarEmpty>
-      ) : null} */}
-      {props.children && <Icon>{props.children}</Icon>}
+      {props.icon && <Icon>{props.children}</Icon>}
       <Main>
         {props.overline && (
           <Overline>
@@ -103,7 +113,6 @@ const Lists: FC<Props> = (props) => {
 const Container = styled.View`
   flex-direction: row;
   align-items: center;
-  background-color: salmon;
 `;
 
 const Avatar = styled.Image`
@@ -120,6 +129,24 @@ const AvatarEmpty = styled.View`
   width: 50px;
   height: 50px;
   border-radius: 25px;
+  margin-right: 10px;
+  background-color: ${color.lightgray};
+`;
+
+const AvatarSmall = styled.Image`
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin-right: 10px;
+  background-color: ${color.lightgray};
+`;
+
+const AvatarSmallEmpty = styled.View`
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
   margin-right: 10px;
   background-color: ${color.lightgray};
 `;
