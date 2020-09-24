@@ -5,10 +5,11 @@ import { Text, View } from "react-native";
 import styled from "styled-components/native";
 
 interface Props {
-  scale: "heading1" | "body" | "overline" | "caption";
+  scale: "heading1" | "subtitle" | "body" | "overline" | "caption";
   bold?: boolean;
   color?: any;
   align?: "center";
+  numberOfLines?: number;
 }
 
 const Typography: FC<Props> = (props) => {
@@ -21,8 +22,21 @@ const Typography: FC<Props> = (props) => {
           </Heading1>
         </Text>
       )}
+      {props.scale === "subtitle" && (
+        <Text
+          style={props.bold && { fontWeight: "bold" }}
+          numberOfLines={props.numberOfLines}
+        >
+          <Subtitle style={{ color: props.color, textAlign: props.align }}>
+            {props.children}
+          </Subtitle>
+        </Text>
+      )}
       {props.scale === "body" && (
-        <Text style={props.bold && { fontWeight: "bold" }}>
+        <Text
+          style={props.bold && { fontWeight: "bold" }}
+          numberOfLines={props.numberOfLines}
+        >
           <Body style={{ color: props.color, textAlign: props.align }}>
             {props.children}
           </Body>
@@ -47,6 +61,11 @@ const Heading1 = styled.Text`
   letter-spacing: 0.65px;
 `;
 
+const Subtitle = styled.Text`
+  font-size: 16px;
+  letter-spacing: 0.65px;
+`;
+
 const Body = styled.Text`
   font-size: 14px;
   letter-spacing: 0.65px;
@@ -61,4 +80,5 @@ const Caption = styled.Text`
   font-size: 10px;
   letter-spacing: 0.65px;
 `;
+
 export default Typography;

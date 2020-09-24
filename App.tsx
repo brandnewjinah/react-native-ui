@@ -4,6 +4,7 @@ import { SafeAreaView, Platform, StatusBar, View } from "react-native";
 //import screens
 import Input from "./screens/InputExample";
 import Buttons from "./screens/ButtonExample";
+import Lists from "./screens/ListExample";
 
 //import styles and assets
 import styled from "styled-components";
@@ -11,8 +12,9 @@ import styled from "styled-components";
 const App: FC = () => {
   return (
     <Wrapper>
-      <Input />
+      {/* <Input /> */}
       {/* <Buttons /> */}
+      <Lists />
     </Wrapper>
   );
 };

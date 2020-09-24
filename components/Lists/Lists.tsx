@@ -19,6 +19,7 @@ interface Props {
   option?: any;
   icon?: boolean;
   unread?: number;
+  initial?: boolean;
 }
 
 const Lists: FC<Props> = (props) => {
@@ -26,6 +27,14 @@ const Lists: FC<Props> = (props) => {
     <Container>
       {props.avatar ? (
         <Avatar source={{ uri: props.avatar }} />
+      ) : props.avatar === null && props.initial === true ? (
+        <AvatarEmpty
+          style={{ ...(props.color && { backgroundColor: props.color }) }}
+        >
+          <Typography scale="subtitle" color={color.black}>
+            {props.primary.charAt(0)}
+          </Typography>
+        </AvatarEmpty>
       ) : props.avatar === null ? (
         <AvatarEmpty
           style={{ ...(props.color && { backgroundColor: props.color }) }}
@@ -33,7 +42,16 @@ const Lists: FC<Props> = (props) => {
           <User />
         </AvatarEmpty>
       ) : null}
-      {props.icon && <Icon>{props.children}</Icon>}
+      {/* {props.avatar ? (
+        <Avatar source={{ uri: props.avatar }} />
+      ) : props.avatar === null ? (
+        <AvatarEmpty
+          style={{ ...(props.color && { backgroundColor: props.color }) }}
+        >
+          <User />
+        </AvatarEmpty>
+      ) : null} */}
+      {props.children && <Icon>{props.children}</Icon>}
       <Main>
         {props.overline && (
           <Overline>
@@ -60,25 +78,15 @@ const Lists: FC<Props> = (props) => {
         <Secondary>
           {props.secondary && props.unread ? (
             <View style={{ width: "80%" }}>
-              <Typography
-                scale="subtitle"
-                color={color.black}
-                numberOfLines={1}
-              >
+              <Typography scale="body" color={color.gray} numberOfLines={1}>
                 {props.secondary}
               </Typography>
             </View>
-          ) : (
-            <View style={{ width: "100%" }}>
-              <Typography
-                scale="subtitle"
-                color={color.black}
-                numberOfLines={1}
-              >
-                {props.secondary}
-              </Typography>
-            </View>
-          )}
+          ) : props.secondary ? (
+            <Typography scale="body" color={color.gray} numberOfLines={1}>
+              {props.secondary}
+            </Typography>
+          ) : null}
           {props.unread && (
             <NumContainer>
               <Typography scale="caption" color="#ffffff">
@@ -88,7 +96,6 @@ const Lists: FC<Props> = (props) => {
           )}
         </Secondary>
       </Main>
-      {props.option && <Option></Option>}
     </Container>
   );
 };
@@ -96,7 +103,7 @@ const Lists: FC<Props> = (props) => {
 const Container = styled.View`
   flex-direction: row;
   align-items: center;
-  background-color: darkcyan;
+  background-color: salmon;
 `;
 
 const Avatar = styled.Image`
