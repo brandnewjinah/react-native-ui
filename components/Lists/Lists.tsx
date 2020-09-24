@@ -9,10 +9,10 @@ import color from "../Colors/Colors";
 import { User } from "../../assets/icons/Icons";
 
 interface Props {
-  color?: string;
-  overline?: string;
   primary: string;
   secondary?: string;
+  color?: string;
+  overline?: string;
   sub?: string;
   meta?: string;
   avatar?: any;
