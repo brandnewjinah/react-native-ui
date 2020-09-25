@@ -5,6 +5,7 @@ import { SafeAreaView, Platform, StatusBar, View } from "react-native";
 import Input from "./screens/InputExample";
 import Buttons from "./screens/ButtonExample";
 import Lists from "./screens/ListExample";
+import Cards from "./screens/CardExample";
 
 //import styles and assets
 import styled from "styled-components";
@@ -14,7 +15,8 @@ const App: FC = () => {
     <Wrapper>
       {/* <Input /> */}
       {/* <Buttons /> */}
-      <Lists />
+      {/* <Lists /> */}
+      <Cards />
     </Wrapper>
   );
 };

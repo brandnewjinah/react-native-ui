@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import Svg, { Path, Circle, G } from "react-native-svg";
 
+import color from "../../components/Colors/Colors";
+
 export const Search = () => {
   return (
     <Svg
@@ -64,6 +66,7 @@ export const Apple = () => {
 
 interface UserProps {
   size?: number;
+  color?: string;
 }
 
 export const User: FC<UserProps> = (props) => {
@@ -73,11 +76,32 @@ export const User: FC<UserProps> = (props) => {
       height={props.size ? props.size : 24}
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#fff"
+      stroke={props.color ? props.color : "#fff"}
       strokeWidth={2}
     >
       <Path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
       <Circle cx={12} cy={7} r={4} />
+    </Svg>
+  );
+};
+
+interface HeartProps {
+  size?: number;
+  color?: string;
+  stroke?: number;
+}
+
+export const Heart: FC<HeartProps> = (props) => {
+  return (
+    <Svg
+      width={props.size ? props.size : 24}
+      height={props.size ? props.size : 24}
+      viewBox="0 0 24 24"
+      fill={props.color}
+      stroke={color.darkgray}
+      strokeWidth={props.stroke}
+    >
+      <Path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
     </Svg>
   );
 };

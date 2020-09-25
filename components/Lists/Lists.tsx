@@ -9,11 +9,14 @@ import color from "../Colors/Colors";
 import { User } from "../../assets/icons/Icons";
 
 interface Props {
-  primary: string;
+  primary?: string;
+  primary2?: string;
   secondary?: string;
+  secondary2?: string;
   color?: string;
   overline?: string;
   sub?: string;
+  sub2?: string;
   meta?: string;
   avatar?: any;
   avatarSmall?: boolean;
@@ -21,37 +24,29 @@ interface Props {
   icon?: boolean;
   unread?: number;
   initial?: boolean;
+  paddingVertical?: number;
+  paddingHorizontal?: number;
 }
 
-const Lists: FC<Props> = (props) => {
+export const Default: FC<Props> = (props) => {
+  const ContainerPadding = {
+    ...(props.paddingHorizontal && {
+      paddingHorizontal: props.paddingHorizontal,
+    }),
+    ...(props.paddingVertical && {
+      paddingVertical: props.paddingVertical,
+    }),
+  };
   return (
-    <Container>
-      {props.avatar && props.avatarSmall ? (
-        <AvatarSmall source={{ uri: props.avatar }} />
-      ) : props.avatar === null &&
-        props.avatarSmall &&
-        props.initial === true ? (
-        <AvatarSmallEmpty
-          style={{ ...(props.color && { backgroundColor: props.color }) }}
-        >
-          <Typography scale="body" color={color.black}>
-            {props.primary.charAt(0)}
-          </Typography>
-        </AvatarSmallEmpty>
-      ) : props.avatar === null && props.avatarSmall ? (
-        <AvatarSmallEmpty
-          style={{ ...(props.color && { backgroundColor: props.color }) }}
-        >
-          <User size={18} />
-        </AvatarSmallEmpty>
-      ) : props.avatar ? (
+    <Container style={ContainerPadding}>
+      {props.avatar ? (
         <Avatar source={{ uri: props.avatar }} />
       ) : props.avatar === null && props.initial === true ? (
         <AvatarEmpty
           style={{ ...(props.color && { backgroundColor: props.color }) }}
         >
           <Typography scale="subtitle" color={color.black}>
-            {props.primary.charAt(0)}
+            {props.primary && props.primary.charAt(0)}
           </Typography>
         </AvatarEmpty>
       ) : props.avatar === null ? (
@@ -71,9 +66,11 @@ const Lists: FC<Props> = (props) => {
           </Overline>
         )}
         <Primary>
-          <Typography scale="subtitle" color={color.black} numberOfLines={1}>
-            {props.primary}
-          </Typography>
+          {props.primary && (
+            <Typography scale="subtitle" color={color.black} numberOfLines={1}>
+              {props.primary}
+            </Typography>
+          )}
           {props.meta && (
             <Typography scale="overline" color={color.gray}>
               {props.meta}
@@ -97,6 +94,87 @@ const Lists: FC<Props> = (props) => {
               {props.secondary}
             </Typography>
           ) : null}
+
+          {props.unread && (
+            <NumContainer>
+              <Typography scale="caption" color="#ffffff">
+                {props.unread}
+              </Typography>
+            </NumContainer>
+          )}
+        </Secondary>
+      </Main>
+    </Container>
+  );
+};
+
+export const Small: FC<Props> = (props) => {
+  const ContainerPadding = {
+    ...(props.paddingHorizontal && {
+      paddingHorizontal: props.paddingHorizontal,
+    }),
+    ...(props.paddingVertical && {
+      paddingVertical: props.paddingVertical,
+    }),
+  };
+  return (
+    <Container style={ContainerPadding}>
+      {props.avatar ? (
+        <AvatarSmall source={{ uri: props.avatar }} />
+      ) : props.avatar === null && props.initial === true ? (
+        <AvatarSmallEmpty
+          style={{ ...(props.color && { backgroundColor: props.color }) }}
+        >
+          <Typography scale="body" color={color.black}>
+            {props.primary && props.primary.charAt(0)}
+          </Typography>
+        </AvatarSmallEmpty>
+      ) : props.avatar === null ? (
+        <AvatarSmallEmpty
+          style={{ ...(props.color && { backgroundColor: props.color }) }}
+        >
+          <User size={18} />
+        </AvatarSmallEmpty>
+      ) : null}
+      {props.icon && <Icon>{props.children}</Icon>}
+      <Main>
+        {props.overline && (
+          <Overline>
+            <Typography scale="caption" color={color.gray}>
+              {props.overline}
+            </Typography>
+          </Overline>
+        )}
+        <Primary>
+          {props.primary && (
+            <Typography scale="body" color={color.black} numberOfLines={1}>
+              {props.primary}
+            </Typography>
+          )}
+          {props.meta && (
+            <Typography scale="caption" color={color.gray}>
+              {props.meta}
+            </Typography>
+          )}
+          {props.sub && (
+            <Typography scale="body" color={color.gray}>
+              {props.sub}
+            </Typography>
+          )}
+        </Primary>
+        <Secondary>
+          {props.secondary && props.unread ? (
+            <View style={{ width: "80%" }}>
+              <Typography scale="overline" color={color.gray} numberOfLines={1}>
+                {props.secondary}
+              </Typography>
+            </View>
+          ) : props.secondary ? (
+            <Typography scale="overline" color={color.gray} numberOfLines={1}>
+              {props.secondary}
+            </Typography>
+          ) : null}
+
           {props.unread && (
             <NumContainer>
               <Typography scale="caption" color="#ffffff">
@@ -153,7 +231,6 @@ const AvatarSmallEmpty = styled.View`
 
 const Icon = styled.View`
   margin-right: 10px;
-  background-color: yellow;
 `;
 
 const Main = styled.View`
@@ -190,5 +267,3 @@ const Option = styled.View`
   height: 50px;
   background-color: darkblue;
 `;
-
-export default Lists;

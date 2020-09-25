@@ -9,33 +9,64 @@ import color from "../Colors/Colors";
 import { User } from "../../assets/icons/Icons";
 
 interface Props {
-  primary: string;
+  primary?: string;
+  primary2?: string;
   secondary?: string;
+  secondary2?: string;
   color?: string;
   overline?: string;
   sub?: string;
+  sub2?: string;
   meta?: string;
   avatar?: any;
-  avatarSize?: "small";
+  avatarSmall?: boolean;
   option?: any;
   icon?: boolean;
   unread?: number;
   initial?: boolean;
+  paddingVertical?: number;
+  paddingHorizontal?: number;
 }
 
 const Lists: FC<Props> = (props) => {
+  const ContainerPadding = {
+    ...(props.paddingHorizontal && {
+      paddingHorizontal: props.paddingHorizontal,
+    }),
+    ...(props.paddingVertical && {
+      paddingVertical: props.paddingVertical,
+    }),
+  };
   return (
-    <Container>
-      {props.avatar ? (
-        <Avatar source={{ uri: props.avatar }} />
-      ) : props.avatarSize === "small" ? (
+    <Container style={ContainerPadding}>
+      {props.avatar && props.avatarSmall ? (
         <AvatarSmall source={{ uri: props.avatar }} />
+      ) : props.avatar === null &&
+        props.avatarSmall &&
+        props.initial === true ? (
+        <AvatarSmallEmpty
+          style={{ ...(props.color && { backgroundColor: props.color }) }}
+        >
+          <Typography scale="body" color={color.black}>
+            {props.primary && props.primary.charAt(0)}
+            {props.primary2 && props.primary2.charAt(0)}
+          </Typography>
+        </AvatarSmallEmpty>
+      ) : props.avatar === null && props.avatarSmall ? (
+        <AvatarSmallEmpty
+          style={{ ...(props.color && { backgroundColor: props.color }) }}
+        >
+          <User size={18} />
+        </AvatarSmallEmpty>
+      ) : props.avatar ? (
+        <Avatar source={{ uri: props.avatar }} />
       ) : props.avatar === null && props.initial === true ? (
         <AvatarEmpty
           style={{ ...(props.color && { backgroundColor: props.color }) }}
         >
           <Typography scale="subtitle" color={color.black}>
-            {props.primary.charAt(0)}
+            {props.primary && props.primary.charAt(0)}
+            {props.primary2 && props.primary2.charAt(0)}
           </Typography>
         </AvatarEmpty>
       ) : props.avatar === null ? (
@@ -55,9 +86,16 @@ const Lists: FC<Props> = (props) => {
           </Overline>
         )}
         <Primary>
-          <Typography scale="subtitle" color={color.black} numberOfLines={1}>
-            {props.primary}
-          </Typography>
+          {props.primary && (
+            <Typography scale="subtitle" color={color.black} numberOfLines={1}>
+              {props.primary}
+            </Typography>
+          )}
+          {props.primary2 && (
+            <Typography scale="body" color={color.black} numberOfLines={1}>
+              {props.primary2}
+            </Typography>
+          )}
           {props.meta && (
             <Typography scale="overline" color={color.gray}>
               {props.meta}
@@ -66,6 +104,11 @@ const Lists: FC<Props> = (props) => {
           {props.sub && (
             <Typography scale="subtitle" color={color.gray}>
               {props.sub}
+            </Typography>
+          )}
+          {props.sub2 && (
+            <Typography scale="body" color={color.gray}>
+              {props.sub2}
             </Typography>
           )}
         </Primary>
@@ -80,7 +123,18 @@ const Lists: FC<Props> = (props) => {
             <Typography scale="body" color={color.gray} numberOfLines={1}>
               {props.secondary}
             </Typography>
+          ) : props.secondary2 && props.unread ? (
+            <View style={{ width: "80%" }}>
+              <Typography scale="overline" color={color.gray} numberOfLines={1}>
+                {props.secondary2}
+              </Typography>
+            </View>
+          ) : props.secondary2 ? (
+            <Typography scale="overline" color={color.gray} numberOfLines={1}>
+              {props.secondary2}
+            </Typography>
           ) : null}
+
           {props.unread && (
             <NumContainer>
               <Typography scale="caption" color="#ffffff">
@@ -118,6 +172,16 @@ const AvatarEmpty = styled.View`
 `;
 
 const AvatarSmall = styled.Image`
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin-right: 10px;
+  background-color: ${color.lightgray};
+`;
+
+const AvatarSmallEmpty = styled.View`
+  justify-content: center;
+  align-items: center;
   width: 30px;
   height: 30px;
   border-radius: 15px;

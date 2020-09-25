@@ -43,9 +43,14 @@ const Typography: FC<Props> = (props) => {
         </Text>
       )}
       {props.scale === "overline" && (
-        <Overline style={{ color: props.color, textAlign: props.align }}>
-          {props.children}
-        </Overline>
+        <Text
+          style={props.bold && { fontWeight: "bold" }}
+          numberOfLines={props.numberOfLines}
+        >
+          <Overline style={{ color: props.color, textAlign: props.align }}>
+            {props.children}
+          </Overline>
+        </Text>
       )}
       {props.scale === "caption" && (
         <Caption style={{ color: props.color, textAlign: props.align }}>
@@ -69,6 +74,7 @@ const Subtitle = styled.Text`
 const Body = styled.Text`
   font-size: 14px;
   letter-spacing: 0.65px;
+  line-height: 20px;
 `;
 
 const Overline = styled.Text`
