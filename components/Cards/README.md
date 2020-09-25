@@ -67,26 +67,26 @@ import Slider from "../components/Slider/Slider";
 import { Like } from "../components/Actions/Actions";
 
 <View style={{flex: 1, paddingVertical: 24 }}>
-	<Card shadow={true}>
-		<List.Small
-		  avatar="http://..."
-		  primary="Primary"
-		  secondary={metadata}
-		  paddingVertical={25}
-		  paddingHorizontal={20}
-		/>
-		<View style={{ height: 200 }}>
-		    <Slider images={imageData} paddingOffset={48} />
-		  </View>
-		<Like
-		  totalLikes={totalLikes}
-		  like={like}
-		  handleTotalLikes={(likes) => setTotalLikes(likes)}
-		  handleMyLike={(like) => setLike(like)}
-		  paddingVertical={25}
-		  paddingHorizontal={20}
-		/>
-	</Card>
+  <Card shadow={true}>
+    <List.Small
+      avatar="http://..."
+      primary="Primary"
+      secondary={metadata}
+      paddingVertical={25}
+      paddingHorizontal={20}
+    />
+    <View style={{ height: 200 }}>
+      <Slider images={imageData} paddingOffset={48} />
+    </View>
+    <Like
+      totalLikes={totalLikes}
+      like={like}
+      handleTotalLikes={(likes) => setTotalLikes(likes)}
+      handleMyLike={(like) => setLike(like)}
+      paddingVertical={25}
+      paddingHorizontal={20}
+    />
+  </Card>
 <View>
 ```
 
