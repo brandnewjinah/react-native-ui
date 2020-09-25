@@ -24,7 +24,7 @@ That's it. Use you place components of your choice inside. Please see examples.
 
 ### Examples
 
-<img src="https://raw.githubusercontent.com/brandnewjinah/react-native-ui/master/assets/readme/CardLayout1%402x.png" alt="card1" width="200"/>
+<img src="https://raw.githubusercontent.com/brandnewjinah/react-native-ui/master/assets/readme/CardLayout1%402x.png" alt="card1" width="350"/>
 
 Make sure to use padding properties wisely to adjust the position.
 
@@ -58,7 +58,7 @@ import { Like } from "../components/Actions/Actions";
 </Card>;
 ```
 
-<img src="https://raw.githubusercontent.com/brandnewjinah/react-native-ui/master/assets/readme/CardLayout2%402x.png" alt="card2" width="200"/>
+<img src="https://raw.githubusercontent.com/brandnewjinah/react-native-ui/master/assets/readme/CardLayout2%402x.png" alt="card2" width="350"/>
 
 ```tsx
 import Card from "../components/Cards/Cards";
