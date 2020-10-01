@@ -24,7 +24,7 @@ That's it. Use you place components of your choice inside. Please see examples.
 
 ### Examples
 
-![Card%20b857625c80694088a51105aceab3bd98/CardLayout12x.png](Card%20b857625c80694088a51105aceab3bd98/CardLayout12x.png)
+<img src="https://raw.githubusercontent.com/brandnewjinah/react-native-ui/master/assets/readme/CardLayout1%402x.png" alt="card1" width="350"/>
 
 Make sure to use padding properties wisely to adjust the position.
 
@@ -58,7 +58,7 @@ import { Like } from "../components/Actions/Actions";
 </Card>;
 ```
 
-![Card%20b857625c80694088a51105aceab3bd98/CardLayout22x.png](Card%20b857625c80694088a51105aceab3bd98/CardLayout22x.png)
+<img src="https://raw.githubusercontent.com/brandnewjinah/react-native-ui/master/assets/readme/CardLayout2%402x.png" alt="card2" width="350"/>
 
 ```tsx
 import Card from "../components/Cards/Cards";
@@ -67,26 +67,26 @@ import Slider from "../components/Slider/Slider";
 import { Like } from "../components/Actions/Actions";
 
 <View style={{flex: 1, paddingVertical: 24 }}>
-	<Card shadow={true}>
-		<List.Small
-		  avatar="http://..."
-		  primary="Primary"
-		  secondary={metadata}
-		  paddingVertical={25}
-		  paddingHorizontal={20}
-		/>
-		<View style={{ height: 200 }}>
-		    <Slider images={imageData} paddingOffset={48} />
-		  </View>
-		<Like
-		  totalLikes={totalLikes}
-		  like={like}
-		  handleTotalLikes={(likes) => setTotalLikes(likes)}
-		  handleMyLike={(like) => setLike(like)}
-		  paddingVertical={25}
-		  paddingHorizontal={20}
-		/>
-	</Card>
+  <Card shadow={true}>
+    <List.Small
+      avatar="http://..."
+      primary="Primary"
+      secondary={metadata}
+      paddingVertical={25}
+      paddingHorizontal={20}
+    />
+    <View style={{ height: 200 }}>
+      <Slider images={imageData} paddingOffset={48} />
+    </View>
+    <Like
+      totalLikes={totalLikes}
+      like={like}
+      handleTotalLikes={(likes) => setTotalLikes(likes)}
+      handleMyLike={(like) => setLike(like)}
+      paddingVertical={25}
+      paddingHorizontal={20}
+    />
+  </Card>
 <View>
 ```
 
