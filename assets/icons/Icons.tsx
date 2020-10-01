@@ -105,3 +105,45 @@ export const Heart: FC<HeartProps> = (props) => {
     </Svg>
   );
 };
+
+interface ChevronRightProps {
+  size?: number;
+  color?: string;
+  stroke?: number;
+}
+
+export const ChevronRight: FC<ChevronRightProps> = (props) => {
+  return (
+    <Svg
+      width={props.size ? props.size : 24}
+      height={props.size ? props.size : 24}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={props.color ? props.color : "#fff"}
+      strokeWidth={2}
+    >
+      <Path d="M9 18l6-6-6-6" />
+    </Svg>
+  );
+};
+
+interface CheckmarkProps {
+  size?: number;
+  color?: string;
+  stroke?: number;
+}
+
+export const Checkmark: FC<CheckmarkProps> = (props) => {
+  return (
+    <Svg
+      width={props.size ? props.size : 24}
+      height={props.size ? props.size : 24}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={props.color ? props.color : "#fff"}
+      strokeWidth={2}
+    >
+      <Path d="M20 6L9 17l-5-5" />
+    </Svg>
+  );
+};

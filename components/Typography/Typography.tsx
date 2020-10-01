@@ -5,7 +5,15 @@ import { Text, View } from "react-native";
 import styled from "styled-components/native";
 
 interface Props {
-  scale: "heading1" | "subtitle" | "body" | "overline" | "caption";
+  scale:
+    | "heading1"
+    | "heading2"
+    | "heading3"
+    | "heading4"
+    | "subtitle"
+    | "body"
+    | "overline"
+    | "caption";
   bold?: boolean;
   color?: any;
   align?: "center";
@@ -20,6 +28,27 @@ const Typography: FC<Props> = (props) => {
           <Heading1 style={{ color: props.color, textAlign: props.align }}>
             {props.children}
           </Heading1>
+        </Text>
+      )}
+      {props.scale === "heading2" && (
+        <Text style={props.bold && { fontWeight: "700" }}>
+          <Heading2 style={{ color: props.color, textAlign: props.align }}>
+            {props.children}
+          </Heading2>
+        </Text>
+      )}
+      {props.scale === "heading3" && (
+        <Text style={props.bold && { fontWeight: "700" }}>
+          <Heading3 style={{ color: props.color, textAlign: props.align }}>
+            {props.children}
+          </Heading3>
+        </Text>
+      )}
+      {props.scale === "heading4" && (
+        <Text style={props.bold && { fontWeight: "700" }}>
+          <Heading4 style={{ color: props.color, textAlign: props.align }}>
+            {props.children}
+          </Heading4>
         </Text>
       )}
       {props.scale === "subtitle" && (
@@ -63,6 +92,21 @@ const Typography: FC<Props> = (props) => {
 
 const Heading1 = styled.Text`
   font-size: 24px;
+  letter-spacing: 0.65px;
+`;
+
+const Heading2 = styled.Text`
+  font-size: 22px;
+  letter-spacing: 0.65px;
+`;
+
+const Heading3 = styled.Text`
+  font-size: 20px;
+  letter-spacing: 0.65px;
+`;
+
+const Heading4 = styled.Text`
+  font-size: 18px;
   letter-spacing: 0.65px;
 `;
 

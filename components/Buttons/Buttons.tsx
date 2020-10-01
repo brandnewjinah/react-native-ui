@@ -8,7 +8,7 @@ import { ArrowRight, ArrowLeft } from "../../assets/icons/Icons";
 
 interface Props {
   style?: "rounded" | "pill" | "contained";
-  size?: "large" | "small";
+  size?: "large" | "small" | "xsmall";
   arrow?: "prev" | "next";
   label?: string;
   color?: any;
@@ -21,21 +21,34 @@ const Buttons: FC<Props> = (props) => {
     <TouchableOpacity onPress={props.onPress} disabled={props.disabled}>
       <Container
         style={{
+          ...{ paddingVertical: 12, paddingHorizontal: 24 },
           ...(props.style === "pill"
             ? Pill
             : props.style === "contained"
             ? Contained
             : null),
           ...(props.size === "small" && { width: "35%" }),
+          ...(props.size === "xsmall" && {
+            alignSelf: "center",
+            paddingVertical: 8,
+            paddingHorizontal: 18,
+          }),
           ...(props.color && { backgroundColor: props.color }),
           ...(props.arrow && { justifyContent: "space-between" }),
           ...(props.disabled && { backgroundColor: "#eee" }),
         }}
       >
         {props.arrow === "prev" && <ArrowLeft />}
-        <Typography scale="body" bold={true} color="#ffffff">
-          {props.label}
-        </Typography>
+        {props.size === "xsmall" ? (
+          <Typography scale="overline" bold={true} color="#ffffff">
+            {props.label}
+          </Typography>
+        ) : (
+          <Typography scale="body" bold={true} color="#ffffff">
+            {props.label}
+          </Typography>
+        )}
+
         {props.arrow === "next" && <ArrowRight />}
         {props.children && props.children}
       </Container>
@@ -47,7 +60,6 @@ const Container = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 14px 24px;
   background-color: #000;
   border-radius: 8px;
 `;

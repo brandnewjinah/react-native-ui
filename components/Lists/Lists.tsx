@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { View } from "react-native";
+import { TouchableWithoutFeedback, View } from "react-native";
 
 import Typography from "../Typography/Typography";
 
@@ -21,11 +21,12 @@ interface Props {
   avatar?: any;
   avatarSmall?: boolean;
   option?: any;
-  icon?: boolean;
+  icon?: any;
   unread?: number;
   initial?: boolean;
   paddingVertical?: number;
   paddingHorizontal?: number;
+  onPress: () => void;
 }
 
 export const Default: FC<Props> = (props) => {
@@ -38,73 +39,80 @@ export const Default: FC<Props> = (props) => {
     }),
   };
   return (
-    <Container style={ContainerPadding}>
-      {props.avatar ? (
-        <Avatar source={{ uri: props.avatar }} />
-      ) : props.avatar === null && props.initial === true ? (
-        <AvatarEmpty
-          style={{ ...(props.color && { backgroundColor: props.color }) }}
-        >
-          <Typography scale="subtitle" color={color.black}>
-            {props.primary && props.primary.charAt(0)}
-          </Typography>
-        </AvatarEmpty>
-      ) : props.avatar === null ? (
-        <AvatarEmpty
-          style={{ ...(props.color && { backgroundColor: props.color }) }}
-        >
-          <User />
-        </AvatarEmpty>
-      ) : null}
-      {props.icon && <Icon>{props.children}</Icon>}
-      <Main>
-        {props.overline && (
-          <Overline>
-            <Typography scale="overline" color={color.gray}>
-              {props.overline}
+    <TouchableWithoutFeedback onPress={props.onPress}>
+      <Container style={ContainerPadding}>
+        {props.avatar ? (
+          <Avatar source={{ uri: props.avatar }} />
+        ) : props.avatar === null && props.initial === true ? (
+          <AvatarEmpty
+            style={{ ...(props.color && { backgroundColor: props.color }) }}
+          >
+            <Typography scale="subtitle" color={color.black}>
+              {props.primary && props.primary.charAt(0)}
             </Typography>
-          </Overline>
-        )}
-        <Primary>
-          {props.primary && (
-            <Typography scale="subtitle" color={color.black} numberOfLines={1}>
-              {props.primary}
-            </Typography>
+          </AvatarEmpty>
+        ) : props.avatar === null ? (
+          <AvatarEmpty
+            style={{ ...(props.color && { backgroundColor: props.color }) }}
+          >
+            <User />
+          </AvatarEmpty>
+        ) : null}
+        {props.icon && <Icon>{props.icon}</Icon>}
+        <Main>
+          {props.overline && (
+            <Overline>
+              <Typography scale="overline" color={color.gray}>
+                {props.overline}
+              </Typography>
+            </Overline>
           )}
-          {props.meta && (
-            <Typography scale="overline" color={color.gray}>
-              {props.meta}
-            </Typography>
-          )}
-          {props.sub && (
-            <Typography scale="subtitle" color={color.gray}>
-              {props.sub}
-            </Typography>
-          )}
-        </Primary>
-        <Secondary>
-          {props.secondary && props.unread ? (
-            <View style={{ width: "80%" }}>
+          <Primary>
+            {props.primary && (
+              <Typography
+                scale="subtitle"
+                color={color.black}
+                numberOfLines={1}
+              >
+                {props.primary}
+              </Typography>
+            )}
+            {props.meta && (
+              <Typography scale="overline" color={color.gray}>
+                {props.meta}
+              </Typography>
+            )}
+            {props.sub && (
+              <Typography scale="subtitle" color={color.gray}>
+                {props.sub}
+              </Typography>
+            )}
+          </Primary>
+          <Secondary>
+            {props.secondary && props.unread ? (
+              <View style={{ width: "80%" }}>
+                <Typography scale="body" color={color.gray} numberOfLines={1}>
+                  {props.secondary}
+                </Typography>
+              </View>
+            ) : props.secondary ? (
               <Typography scale="body" color={color.gray} numberOfLines={1}>
                 {props.secondary}
               </Typography>
-            </View>
-          ) : props.secondary ? (
-            <Typography scale="body" color={color.gray} numberOfLines={1}>
-              {props.secondary}
-            </Typography>
-          ) : null}
+            ) : null}
 
-          {props.unread && (
-            <NumContainer>
-              <Typography scale="caption" color="#ffffff">
-                {props.unread}
-              </Typography>
-            </NumContainer>
-          )}
-        </Secondary>
-      </Main>
-    </Container>
+            {props.unread && (
+              <NumContainer>
+                <Typography scale="caption" color="#ffffff">
+                  {props.unread}
+                </Typography>
+              </NumContainer>
+            )}
+          </Secondary>
+        </Main>
+        {props.option && props.option}
+      </Container>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -264,6 +272,6 @@ const NumContainer = styled.View`
 
 const Option = styled.View`
   width: 50px;
-  height: 50px;
+  height: 100%;
   background-color: darkblue;
 `;

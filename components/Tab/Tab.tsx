@@ -1,45 +1,26 @@
 import React, { useState } from "react";
-import {
-  Text,
-  TouchableOpacity,
-  Animated,
-  ScrollView,
-  View,
-  Dimensions,
-} from "react-native";
+import { Animated, Dimensions, Text } from "react-native";
 
 //import styles and assets
 import styled from "styled-components/native";
 
-const data = [1, 2];
+interface Props {
+  data?: any;
+}
 
-const TabExample = () => {
+const TabMenu: React.FC<Props> = (props) => {
   const width = Dimensions.get("window").width;
   const [active, setActive] = useState(0);
   const barX = useState(new Animated.Value(0))[0];
-  const contentX = useState(new Animated.Value(width))[0];
   const [newValues, setNewValues] = useState({});
 
-  const handleBar = (index, num) => {
+  const handleBar = (index: number, num: number) => {
     setActive(index);
     Animated.timing(barX, {
       toValue: num,
       duration: 200,
       useNativeDriver: false,
     }).start();
-    if (active === 0) {
-      Animated.timing(contentX, {
-        toValue: 0,
-        duration: 200,
-        useNativeDriver: false,
-      }).start();
-    } else {
-      Animated.timing(contentX, {
-        toValue: width,
-        duration: 200,
-        useNativeDriver: false,
-      }).start();
-    }
   };
 
   return (
@@ -48,14 +29,14 @@ const TabExample = () => {
         <Animated.View
           style={{
             position: "absolute",
-            width: width / data.length,
+            width: width / props.data.length,
             height: "100%",
             backgroundColor: "khaki",
             bottom: 0,
             marginLeft: barX,
           }}
         />
-        {data.map((data, index) => (
+        {props.data.map((data: string, index: number) => (
           <Tab
             key={index}
             onLayout={(event) => {
@@ -73,17 +54,6 @@ const TabExample = () => {
           </Tab>
         ))}
       </Menu>
-
-      <ScrollView>
-        <View style={{ flexDirection: "row" }}>
-          <Animated.View style={{ marginLeft: 0 }}>
-            {/* <Text>content1</Text> */}
-          </Animated.View>
-          <Animated.View style={{ marginLeft: contentX }}>
-            <Text>content2</Text>
-          </Animated.View>
-        </View>
-      </ScrollView>
     </Container>
   );
 };
@@ -105,4 +75,5 @@ const Tab = styled.TouchableOpacity`
   align-items: center;
   padding: 10px;
 `;
-export default TabExample;
+
+export default TabMenu;

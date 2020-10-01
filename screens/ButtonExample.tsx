@@ -52,6 +52,13 @@ const ButtonExample: FC<Props> = (props) => {
           </Typography>
         </View>
       </Buttons>
+      <Buttons
+        style="rounded"
+        size="xsmall"
+        label="Button"
+        disabled={true}
+        onPress={() => console.log("pressed")}
+      />
     </Container>
   );
 };

@@ -62,10 +62,10 @@ const CardExample: FC<Props> = (props) => {
           paddingVertical={25}
           paddingHorizontal={20}
         />
-        <View style={{ height: 200 }}>
+        <View style={{ height: 300 }}>
           <Slider images={imageData} paddingOffset={24 * 2} />
         </View>
-
+        {/* 
         <Like
           totalLikes={totalLikes}
           like={like}
@@ -73,7 +73,7 @@ const CardExample: FC<Props> = (props) => {
           handleMyLike={(like) => setLike(like)}
           paddingVertical={25}
           paddingHorizontal={20}
-        />
+        /> */}
       </Card>
     </Container>
   );

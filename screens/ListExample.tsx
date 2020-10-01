@@ -2,16 +2,37 @@ import React, { FC } from "react";
 
 //import components
 import * as List from "../components/Lists/Lists";
+import Buttons from "../components/Buttons/Buttons";
 
 //import styles and assets
 import styled from "styled-components/native";
-import { User } from "../assets/icons/Icons";
+import { User, ChevronRight } from "../assets/icons/Icons";
+import colors from "../components/Colors/Colors";
 
 interface Props {}
 
 const ListExample: FC<Props> = (props) => {
   return (
     <Container>
+      <List.Default
+        avatar="https://images.pexels.com/photos/1520903/pexels-photo-1520903.jpeg"
+        primary="Jinah Lee"
+        secondary="non augue ultrices"
+        option={
+          <Buttons
+            style="rounded"
+            size="xsmall"
+            label="Button"
+            onPress={() => console.log("pressed")}
+          />
+        }
+      />
+      <List.Default
+        avatar="https://images.pexels.com/photos/1520903/pexels-photo-1520903.jpeg"
+        primary="Jinah Lee"
+        secondary="non augue ultrices"
+        option={<ChevronRight color={colors.gray} size={18} />}
+      />
       <List.Default
         avatar="https://images.pexels.com/photos/1520903/pexels-photo-1520903.jpeg"
         primary="Jinah Lee"
@@ -53,9 +74,7 @@ const ListExample: FC<Props> = (props) => {
       <List.Small primary="Jinah Lee" overline="HELLO" />
       <List.Small primary="Jinah Lee" sub="Subtext" />
       <List.Small primary="Jinah Lee" meta="meta" />
-      <List.Small primary="Jinah Lee" icon={true}>
-        <User color="#000" />
-      </List.Small>
+      <List.Default primary="Jinah Lee" icon={<User color="#000" />} />
     </Container>
   );
 };
