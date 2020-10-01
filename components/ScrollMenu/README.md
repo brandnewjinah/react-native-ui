@@ -1,9 +1,40 @@
+# Scroll Menu
+
+Scroll Menu acts as a naviation component for a set of tabs that cannot fit on screen
+
+<img src="https://raw.githubusercontent.com/brandnewjinah/react-native-ui/master/assets/readme/ScrollMenu.gif" alt="scrollmenu" width="350"/>
+
+### Usage
+
+Start by importing ScrollMenu component.
+
+```tsx
+import Card from "./components/ScrollMenu/ScrollMenu";
+```
+
+<br>
+
+Pass data in an array form, set item received from onSelect to the state, and pass that item back as selected.
+
+```tsx
+<ScrollMenu
+  data={data}
+  onSelect={(item) => setCurrent(item)}
+  selected={current}
+/>
+```
+
+<br>
+
+### Example
+
+```tsx
 import React, { FC, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 //import components
 import ScrollMenu from "../components/ScrollMenu/ScrollMenu";
-//import styles and assets
+
 //import data
 const data = [
   { category: "Healthy" },
@@ -63,3 +94,4 @@ const styles = StyleSheet.create({
 });
 
 export default ScrollMenuScreen;
+```
