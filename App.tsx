@@ -7,7 +7,7 @@ import Buttons from "./screens/ButtonExample";
 import Lists from "./screens/ListExample";
 import Cards from "./screens/CardExample";
 import Tab from "./screens/TabExample";
-import Picker from "./screens/PickerExample";
+import BottomSheet from "./screens/BottomSheetExample";
 import CheckboxExample from "./screens/CheckboxExample";
 import ScrollMenuExample from "./screens/ScrollMenuExample";
 
@@ -22,10 +22,9 @@ const App: FC = () => {
       {/* <Lists /> */}
       {/* <Cards /> */}
       {/* <Tab /> */}
-      {/* <Picker /> */}
-
+      <BottomSheet />
       {/* <CheckboxExample /> */}
-      <ScrollMenuExample />
+      {/* <ScrollMenuExample /> */}
     </Wrapper>
   );
 };

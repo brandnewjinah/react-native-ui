@@ -8,6 +8,7 @@ I'm still learning, so if there is anything that's not properly coded, please fe
 ## Components
 
 - [Buttons](https://github.com/brandnewjinah/react-native-ui/tree/master/components/Buttons)
+- [Bottom Sheet](https://github.com/brandnewjinah/react-native-ui/tree/master/components/BottomSheet)
 - [Cards](https://github.com/brandnewjinah/react-native-ui/tree/master/components/Cards)
 - [Input](https://github.com/brandnewjinah/react-native-ui/tree/master/components/Input)
 - [Lists](https://github.com/brandnewjinah/react-native-ui/tree/master/components/Lists)
