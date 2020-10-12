@@ -2,6 +2,8 @@
 
 Bottom Sheet is a botoom-anchored container that holds contents or actions. It slides up on top of fade in modal.
 
+<img src="https://raw.githubusercontent.com/brandnewjinah/react-native-ui/master/assets/readme/BottomSheet.gif" alt="scrollmenu" width="350"/>
+
 ### Usage
 
 Start by importing BottomSheet component.
